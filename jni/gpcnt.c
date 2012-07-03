@@ -18,6 +18,7 @@ int ret[3][2];
 int cur;
 
 jint JNI_OnLoad(JavaVM* vm, void* reserved) {
+	//system("chmod 666 /dev/input/event4");
 	event4_fd = open("/dev/input/event4", O_RDONLY);
 
 	return JNI_VERSION_1_6;
@@ -26,7 +27,7 @@ jint JNI_OnLoad(JavaVM* vm, void* reserved) {
 
 JNIEXPORT jstring JNICALL Java_com_gamepadcontrol_Gamepad_readData (JNIEnv *env, jobject obj) {
     if (event4_fd < 0) {
-    	event4_fd = open("/dev/input/event4", O_RDONLY);
+    	event4_fd = open("/dev/input/event2", O_RDONLY);
     	sprintf(buf, "{retcode: %d}", event4_fd);
     	return (*env)->NewStringUTF(env, buf);
     }

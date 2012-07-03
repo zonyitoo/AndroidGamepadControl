@@ -40,6 +40,7 @@ public class Gamepad {
 			DataOutputStream os = new DataOutputStream(prs.getOutputStream());
 			
 			os.writeBytes("chmod 666 /dev/input/event4\n");
+			os.writeBytes("chmod 666 /dev/input/event2\n");
 			os.flush();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
